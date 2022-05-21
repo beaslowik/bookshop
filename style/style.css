@@ -18,6 +18,7 @@ main {
     background-color: #221C28;
     font-size: large;
     padding: 0 1.5vw;
+    margin-bottom: 1%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,6 +31,10 @@ main {
 
 .page-header ul {
     display: flex;
+}
+
+.page-header li {
+    list-style: none;
 }
 
 .page-header a {
@@ -45,23 +50,35 @@ main {
 }
 
 /* CATALOGUE */
-img {
-    width: 200px;
-}
-
-ul {
-    list-style: none;
-}
-
-article {
-    background-color: rgb(192, 192, 192);
+#books-list article {
+    background-color: #A1B4B2;
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-
 }
 
-div {
+#books-list img {
+    width: 10%;
+}
+
+#books-list div {
     padding-left: 40px;
+}
+
+#books-list span {
+    display: block;
+}
+
+#books-list button {
+    margin: 2vw 1vw 0 0;
+    padding: 1vw 1.2vw;
+    border: none;
+    background-color: #DBAA9B;
+}
+
+#books-list button:hover {
+    background-color: #221C28;
+    color: white;
+    cursor: pointer;
 }
