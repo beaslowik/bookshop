@@ -1,1 +1,67 @@
- 
+@import url(normalize.css);
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+body {
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'Gelasio', serif;
+    background-color: #F7FBEF;
+    color: #221C28;
+    /* color: #B53C6E; */
+}
+
+main {
+    padding: 0 3vw;
+}
+
+/* MAIN MENU  */
+.page-header {
+    background-color: #221C28;
+    font-size: large;
+    padding: 0 1.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 a {
+    font-size: xx-large;
+    font-family: 'Gelasio', serif;
+}
+
+.page-header ul {
+    display: flex;
+}
+
+.page-header a {
+    font-size: x-large;
+    padding-left: 1.5vw;
+    text-decoration: none;
+    color: #A1B4B2;
+
+}
+
+.page-header a:hover {
+    color: #DBAA9B;
+}
+
+/* CATALOGUE */
+img {
+    width: 200px;
+}
+
+ul {
+    list-style: none;
+}
+
+article {
+    background-color: rgb(192, 192, 192);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+}
+
+div {
+    padding-left: 40px;
+}
