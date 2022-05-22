@@ -27,8 +27,11 @@ fetch('books.json')
             author.textContent = myData[index].author + ' ';
             title.textContent = myData[index].title;
             price.textContent = 'Price: ' + myData[index].price + ' $';
+
             more.textContent = 'Show more';
             more.setAttribute('id', 'show-more');
+            more.classList.add('show-more');
+
             addToBag.textContent = 'Add to bag'
             addToBag.classList.add('add-to-bag');
 
@@ -38,15 +41,25 @@ fetch('books.json')
             document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(price);
             document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(more);
             document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(addToBag);
+
+            more.addEventListener('click', () => {
+                const modalWrapper = document.createElement('div');
+                modalWrapper.classList.add('modal-wrapper');
+
+                const modalPopup = document.createElement('div')
+
+                const modalParagraph = document.createElement('p');
+                modalParagraph.textContent = myData[index].description;
+
+                const cancel = document.createElement('button')
+                cancel.textContent = "CLOSE"
+
+                document.getElementById('main').appendChild(modalWrapper).appendChild(modalPopup).appendChild(cancel);
+                document.getElementById('main').appendChild(modalWrapper).appendChild(modalPopup).appendChild(modalParagraph);
+                cancel.addEventListener('click', () => {
+                    modalWrapper.style.display = 'none';
+                })
+            })
         }
 
-        function showMore() {
-            for (let index = 0; index < myData.length; index++) {
-                alert(myData[index].description);
-
-            }
-        }
-        const buttonShowMore = document.getElementsByClassName('show-more');
-        buttonShowMore[0].addEventListener('click', showMore);
-        console.log(buttonShowMore);
     });

@@ -129,3 +129,39 @@ footer {
     margin-top: 10vh;
     padding: 5vh 0;
 }
+
+/* MODAL WINDOW  */
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #221c2863;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper div {
+    background-color: white;
+    width: 40vw;
+    padding: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-wrapper div button {
+    align-self: flex-end;
+    border: none;
+    background-color: #F0C808;
+    cursor: pointer;
+    padding: 0.6vh 0.6vw;
+    font-size: small;
+}
+
+.modal-wrapper p {
+    font-size: large;
+    line-height: 1.5;
+}
