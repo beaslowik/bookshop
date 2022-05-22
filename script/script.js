@@ -7,6 +7,7 @@ fetch('books.json')
 
         const booksList = document.createElement('section');
         booksList.setAttribute("id", "books-list");
+        booksList.classList.add('books-list')
         document.querySelector('main').appendChild(booksList);
 
         for (let index = 0; index < myData.length; index++) {
@@ -25,10 +26,11 @@ fetch('books.json')
             image.src = myData[index].imageLink;
             author.textContent = myData[index].author + ' ';
             title.textContent = myData[index].title;
-            price.textContent = myData[index].price + ' $';
+            price.textContent = 'Price: ' + myData[index].price + ' $';
             more.textContent = 'Show more';
-            more.classList.add('show-more');
+            more.setAttribute('id', 'show-more');
             addToBag.textContent = 'Add to bag'
+            addToBag.classList.add('add-to-bag');
 
             document.getElementById("books-list").appendChild(article).appendChild(image);
             document.getElementById('books-list').appendChild(article).appendChild(wrapper).appendChild(author);
