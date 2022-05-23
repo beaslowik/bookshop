@@ -1,12 +1,42 @@
+//BAG 
+const main = document.querySelector('main');
+const aside = document.createElement('aside');
+
+const bagTitle = document.createElement('h2');
+bagTitle.innerText = 'Your bag'
+
+const yourBooks = document.createElement('ul');
+yourBooks.setAttribute('id', 'your-books')
+
+const item = document.createElement('li');
+item.setAttribute('id', 'empty-bag')
+item.textContent = 'Your bag is empty, add something :)';
+
+const totalPrice = document.createElement('p');
+
+const confirmOrder = document.createElement('a');
+confirmOrder.setAttribute('href', 'form.html')
+confirmOrder.style.display = 'none';
+
+const fragmentAside = new DocumentFragment();
+
+fragmentAside.appendChild(aside).appendChild(bagTitle);
+fragmentAside.appendChild(aside).appendChild(yourBooks);
+fragmentAside.appendChild(aside).appendChild(yourBooks).appendChild(item);
+fragmentAside.appendChild(aside).appendChild(totalPrice);
+fragmentAside.appendChild(aside).appendChild(confirmOrder);
+
+document.querySelector('body').insertBefore(fragmentAside, main);
+
 fetch('books.json')
     .then(response => {
         return response.json();
     })
     .then(data => {
         let myData = data;
-        // ADD HTML 
+        let counter = 0;
+        // ADD HTML BOOK LIST
         const frgmentBookList = new DocumentFragment();
-
         const booksList = document.createElement('section');
         booksList.setAttribute("id", "books-list");
         booksList.classList.add('books-list')
@@ -64,12 +94,40 @@ fetch('books.json')
                 const fragmentModalWindow = new DocumentFragment();
                 fragmentModalWindow.appendChild(modalWrapper).appendChild(modalPopup).appendChild(cancel);
                 fragmentModalWindow.appendChild(modalWrapper).appendChild(modalPopup).appendChild(modalParagraph);
-                document.getElementById('main').appendChild(fragmentModalWindow);
+                document.querySelector('main').appendChild(fragmentModalWindow);
 
                 cancel.addEventListener('click', () => {
                     modalWrapper.style.display = 'none';
                 })
             })
+            //ADD TO BAG
+            addToBag.addEventListener('click', () => {
+                document.getElementById('empty-bag').style.display = 'none';
+
+                const element = document.createElement('li');
+                const removeElement = document.createElement('span');
+                removeElement.setAttribute('id', 'remove');
+                removeElement.textContent = 'X'
+
+
+                element.textContent = 'Title: ' + myData[index].title + ' Author: ' + myData[index].author + ' Price: ' + myData[index].price + ' ';
+                document.getElementById('your-books').appendChild(element).appendChild(removeElement);
+
+                counter = counter + myData[index].price;
+
+                totalPrice.textContent = 'TOTAL PRICE: ' + counter;
+
+                confirmOrder.textContent = 'Confirm order'
+                confirmOrder.style.display = 'block';
+
+                // const remove = document.getElementById('remove');
+                // remove.addEventListener('click', () => {
+                //     document.getElementById('your-books').removeChild(element);
+                // })
+
+            })
+
+
         }
 
     });

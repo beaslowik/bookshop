@@ -14,7 +14,6 @@ menuFragment.querySelector('header').appendChild(nav).appendChild(menuUl);
 const menuItems = {
     Home: `<a href='../index.html'>Home</a>`,
     Form: `<a href='../form.html'>Form</a>`,
-    Bag: `<a href='../bag.html'>Bag</a>`
 }
 
 Object.keys(menuItems).forEach(function(key) {

@@ -165,3 +165,40 @@ footer {
     font-size: large;
     line-height: 1.5;
 }
+
+/* ASIDE */
+aside {
+    background-color: #CDCACC;
+    margin: 0 5vw 4vh 5vw;
+    padding: 1vh 1vw;
+}
+
+aside a {
+    text-decoration: none;
+    background-color: #F0C808;
+    color: #221c28;
+    width: fit-content;
+    margin: 1vh 0.5vw 0 0;
+    padding: 1.5vh 1vw;
+
+}
+
+aside ul {
+    padding: 0;
+    list-style: none;
+    line-height: 2.3;
+}
+
+aside a:hover {
+    background-color: #221C28;
+    color: white;
+}
+
+#remove {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #F0C808;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 100px;
+
+}
