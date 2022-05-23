@@ -120,10 +120,11 @@ fetch('books.json')
                 confirmOrder.textContent = 'Confirm order'
                 confirmOrder.style.display = 'block';
 
-                // const remove = document.getElementById('remove');
-                // remove.addEventListener('click', () => {
-                //     document.getElementById('your-books').removeChild(element);
-                // })
+                removeElement.addEventListener('click', () => {
+                    counter = counter - myData[index].price;
+                    totalPrice.textContent = 'TOTAL PRICE: ' + counter;
+                    document.getElementById('your-books').removeChild(element);
+                })
 
             })
 
