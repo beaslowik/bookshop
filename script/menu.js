@@ -1,16 +1,15 @@
 const header = document.createElement('header');
 header.classList.add('page-header')
-document.querySelector('body').appendChild(header);
 
 const logo = document.createElement('h1');
 logo.innerHTML = `<a href='../index.html'>Your Bookshop</a>`;
-document.querySelector('header').appendChild(logo);
 
 const nav = document.createElement('nav');
-document.querySelector('header').appendChild(nav);
-
 const menuUl = document.createElement('ul');
-document.querySelector('nav').appendChild(menuUl);
+const menuFragment = new DocumentFragment;
+
+menuFragment.appendChild(header).appendChild(logo);
+menuFragment.querySelector('header').appendChild(nav).appendChild(menuUl);
 
 const menuItems = {
     Home: `<a href='../index.html'>Home</a>`,
@@ -21,5 +20,7 @@ const menuItems = {
 Object.keys(menuItems).forEach(function(key) {
     const elementLi = document.createElement('li');
     elementLi.innerHTML = menuItems[key];
-    document.querySelector('ul').appendChild(elementLi);
+    menuFragment.querySelector('ul').appendChild(elementLi);
 });
+
+document.querySelector('body').appendChild(menuFragment);
