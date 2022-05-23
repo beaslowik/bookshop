@@ -4,44 +4,51 @@ fetch('books.json')
     })
     .then(data => {
         let myData = data;
+        // ADD HTML 
+        const frgmentBookList = new DocumentFragment();
 
         const booksList = document.createElement('section');
         booksList.setAttribute("id", "books-list");
         booksList.classList.add('books-list')
-        document.querySelector('main').appendChild(booksList);
 
         for (let index = 0; index < myData.length; index++) {
-
             const article = document.createElement("article");
-            const wrapper = document.createElement("div");
 
             const image = document.createElement('img');
-            const author = document.createElement("h2");
-            const title = document.createElement("h3");
-            const price = document.createElement('span');
-            const more = document.createElement('button');
-            const addToBag = document.createElement('button');
-
-
             image.src = myData[index].imageLink;
+
+            const wrapper = document.createElement("div");
+
+            const author = document.createElement("h2");
             author.textContent = myData[index].author + ' ';
+
+            const title = document.createElement("h3");
             title.textContent = myData[index].title;
+
+            const price = document.createElement('span');
             price.textContent = 'Price: ' + myData[index].price + ' $';
 
+            const more = document.createElement('button');
             more.textContent = 'Show more';
             more.setAttribute('id', 'show-more');
             more.classList.add('show-more');
 
+            const addToBag = document.createElement('button');
             addToBag.textContent = 'Add to bag'
             addToBag.classList.add('add-to-bag');
 
-            document.getElementById("books-list").appendChild(article).appendChild(image);
-            document.getElementById('books-list').appendChild(article).appendChild(wrapper).appendChild(author);
-            document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(title);
-            document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(price);
-            document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(more);
-            document.getElementById("books-list").appendChild(article).appendChild(wrapper).appendChild(addToBag);
+            frgmentBookList.appendChild(booksList).appendChild(article);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(image);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper).appendChild(author);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper).appendChild(title);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper).appendChild(price);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper).appendChild(more);
+            frgmentBookList.appendChild(booksList).appendChild(article).appendChild(wrapper).appendChild(addToBag);
 
+            document.querySelector('main').appendChild(frgmentBookList);
+
+            // SHOW MORE 
             more.addEventListener('click', () => {
                 const modalWrapper = document.createElement('div');
                 modalWrapper.classList.add('modal-wrapper');
@@ -54,8 +61,11 @@ fetch('books.json')
                 const cancel = document.createElement('button')
                 cancel.textContent = "CLOSE"
 
-                document.getElementById('main').appendChild(modalWrapper).appendChild(modalPopup).appendChild(cancel);
-                document.getElementById('main').appendChild(modalWrapper).appendChild(modalPopup).appendChild(modalParagraph);
+                const fragmentModalWindow = new DocumentFragment();
+                fragmentModalWindow.appendChild(modalWrapper).appendChild(modalPopup).appendChild(cancel);
+                fragmentModalWindow.appendChild(modalWrapper).appendChild(modalPopup).appendChild(modalParagraph);
+                document.getElementById('main').appendChild(fragmentModalWindow);
+
                 cancel.addEventListener('click', () => {
                     modalWrapper.style.display = 'none';
                 })
